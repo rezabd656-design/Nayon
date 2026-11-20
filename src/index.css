@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #090807;
+    color: #f5efe6;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans-body {
+  font-family: var(--font-sans);
+}
+
+/* Gold metallic shimmer animation */
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(
+    115deg,
+    #b68a28 0%,
+    #f5e4a8 28%,
+    #d4af37 52%,
+    #fff4cc 74%,
+    #b68a28 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShimmer 7s ease-in-out infinite;
+}
+
+/* Filigree SVG stroke draw animation */
+@keyframes drawFiligree {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0.2;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.animate-filigree {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawFiligree 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle gold hairline sweep */
+@keyframes goldSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.gold-divider-sweep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(245, 228, 168, 0.85), transparent);
+  animation: goldSweep 5s ease-in-out infinite;
+}
+
+/* Gentle vertical float for ornamental crest */
+@keyframes crestFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-crest-float {
+  animation: crestFloat 5s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-up-delayed {
+  animation: fadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .text-gold-shimmer,
+  .animate-filigree,
+  .gold-divider-sweep::after,
+  .animate-crest-float,
+  .animate-fade-in-up,
+  .animate-fade-in-up-delayed {
+    animation: none !important;
+  }
+  .animate-filigree {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}

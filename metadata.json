@@ -1,0 +1,6 @@
+{
+  "name": "Nayon & Nowsin — Golden Wedding Celebration",
+  "description": "A luxury wedding tribute and interactive golden fireworks celebration for Nayon and Nowsin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
